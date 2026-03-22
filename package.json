@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "User Research Consultancy Website",
   "scripts": {
-    "start": "npx serve -s . -l $PORT",
-    "dev": "npx serve -s . -l 3000"
+    "start": "npx serve . -l $PORT",
+    "dev": "npx serve . -l 3000"
   },
   "keywords": [
     "user-research",
