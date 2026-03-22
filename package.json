@@ -1,0 +1,20 @@
+{
+  "name": "nzux-website",
+  "version": "1.0.0",
+  "description": "User Research Consultancy Website",
+  "scripts": {
+    "start": "npx serve -s . -l $PORT",
+    "dev": "npx serve -s . -l 3000"
+  },
+  "keywords": [
+    "user-research",
+    "ux",
+    "wellington",
+    "new-zealand"
+  ],
+  "author": "Michael Dutton",
+  "license": "ISC",
+  "dependencies": {
+    "serve": "^14.2.0"
+  }
+}
