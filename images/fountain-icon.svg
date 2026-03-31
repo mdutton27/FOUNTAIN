@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50" height="50">
+  <!-- Fountain icon - stylized water droplets rising -->
+  <g transform="translate(5, 2)">
+    <!-- Base pool -->
+    <ellipse cx="20" cy="43" rx="12" ry="5" fill="#1a4d5c" opacity="0.2"/>
+
+    <!-- Central rising stream -->
+    <path d="M20 40 Q20 22 20 12 Q20 6 20 3" stroke="#1a4d5c" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+    <!-- Left arc -->
+    <path d="M20 18 Q10 8 6 16 Q2 26 12 38" stroke="#1a4d5c" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- Right arc -->
+    <path d="M20 18 Q30 8 34 16 Q38 26 28 38" stroke="#1a4d5c" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- Top droplet - accent color -->
+    <circle cx="20" cy="2" r="4" fill="#e07b39"/>
+
+    <!-- Side droplets -->
+    <circle cx="5" cy="14" r="2.5" fill="#1a4d5c" opacity="0.5"/>
+    <circle cx="35" cy="14" r="2.5" fill="#1a4d5c" opacity="0.5"/>
+  </g>
+</svg>
