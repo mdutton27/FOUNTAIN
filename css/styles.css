@@ -623,6 +623,7 @@ p:last-child {
 
 .service-detail__content {
     max-width: var(--container-narrow);
+    margin: 0 auto;
 }
 
 .service-detail__title {
@@ -727,6 +728,7 @@ p:last-child {
 
 .about-intro__content {
     max-width: var(--container-narrow);
+    margin: 0 auto;
 }
 
 .about-intro__text h2 {
@@ -1128,6 +1130,16 @@ a.contact-item__value:hover {
     filter: brightness(0) invert(1);
 }
 
+.footer__brand-text {
+    font-family: 'Geneva', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-3);
+    display: block;
+}
+
 .footer__tagline {
     font-size: var(--text-sm);
     line-height: 1.6;
@@ -1257,6 +1269,12 @@ a.contact-item__value:hover {
     100% { left: 200%; }
 }
 
+@keyframes shimmerAuto {
+    0%      { left: -100%; }
+    28.6%   { left: 200%; }
+    28.7%, 100% { left: -100%; }
+}
+
 @keyframes pulse-ring {
     0%   { transform: scale(0.9); opacity: 0.6; }
     100% { transform: scale(1.4); opacity: 0; }
@@ -1367,7 +1385,7 @@ a.contact-item__value:hover {
     position: absolute;
     left: 0;
     bottom: -8px;
-    width: 48px;
+    width: 100%;
     height: 3px;
     background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
     border-radius: 2px;
@@ -1464,7 +1482,7 @@ a.contact-item__value:hover {
 }
 
 .btn--primary::after,
-.btn--large.btn--primary::after {
+.btn--secondary::after {
     content: '';
     position: absolute;
     top: -50%;
@@ -1474,15 +1492,20 @@ a.contact-item__value:hover {
     background: linear-gradient(
         105deg,
         transparent 20%,
-        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.18) 50%,
         transparent 80%
     );
-    transition: none;
+    animation: shimmerAuto 4.2s ease-in-out infinite;
     pointer-events: none;
 }
 
-.btn--primary:hover::after {
-    animation: shimmer 0.6s ease forwards;
+.btn--secondary::after {
+    background: linear-gradient(
+        105deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.12) 50%,
+        transparent 80%
+    );
 }
 
 /* Button lift */
@@ -1537,15 +1560,7 @@ a.contact-item__value:hover {
    Experience logos — hover lift
    -------------------------------------------------------------------------- */
 .experience__logo {
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     cursor: default;
-}
-
-.experience__logo:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-base);
-    border-color: var(--color-primary);
-    color: var(--color-primary-dark);
 }
 
 /* --------------------------------------------------------------------------

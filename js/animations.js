@@ -117,33 +117,6 @@
     }
 
     /* ------------------------------------------------------------------
-       Magnetic Buttons
-       CTA/primary buttons subtly follow the cursor on hover.
-    ------------------------------------------------------------------ */
-    function initMagneticButtons() {
-        if (prefersReducedMotion) return;
-
-        var buttons = document.querySelectorAll('.btn--primary, .btn--large');
-
-        buttons.forEach(function (btn) {
-            btn.addEventListener('mousemove', function (e) {
-                var rect = btn.getBoundingClientRect();
-                var cx = rect.left + rect.width / 2;
-                var cy = rect.top + rect.height / 2;
-                var dx = (e.clientX - cx) / (rect.width / 2);
-                var dy = (e.clientY - cy) / (rect.height / 2);
-                btn.style.transform = 'translate(' + (dx * 5) + 'px, ' + (dy * 4) + 'px)';
-            });
-
-            btn.addEventListener('mouseleave', function () {
-                btn.style.transform = '';
-                btn.style.transition = 'transform 0.3s ease';
-                setTimeout(function () { btn.style.transition = ''; }, 300);
-            });
-        });
-    }
-
-    /* ------------------------------------------------------------------
        Card Tilt (subtle 3D on hover)
     ------------------------------------------------------------------ */
     function initCardTilt() {
@@ -238,7 +211,6 @@
         initStagger();
         initScrollReveal();
         initHeroParallax();
-        initMagneticButtons();
         initCardTilt();
         initTitleLines();
         initCounters();
