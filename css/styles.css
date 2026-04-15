@@ -272,15 +272,15 @@ p:last-child {
     align-items: center;
 }
 
-.nav__logo-text {
-    font-family: var(--font-serif);
-    font-size: var(--text-xl);
-    font-weight: 600;
-    color: var(--color-primary-dark);
+.nav__logo-img {
+    height: 36px;
+    width: auto;
+    display: block;
+    transition: opacity 0.2s ease;
 }
 
-.nav__logo:hover .nav__logo-text {
-    color: var(--color-primary);
+.nav__logo:hover .nav__logo-img {
+    opacity: 0.8;
 }
 
 .nav__toggle {
@@ -1121,10 +1121,8 @@ a.contact-item__value:hover {
 }
 
 .footer__logo {
-    font-family: var(--font-serif);
-    font-size: var(--text-xl);
-    font-weight: 600;
-    color: #fff;
+    height: 36px;
+    width: auto;
     display: block;
     margin-bottom: var(--space-3);
 }
