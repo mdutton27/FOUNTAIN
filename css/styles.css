@@ -1201,3 +1201,416 @@ a.contact-item__value:hover {
     white-space: nowrap;
     border: 0;
 }
+
+/* ==========================================================================
+   Elevation Animations (feature/elevate-design)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Keyframes
+   -------------------------------------------------------------------------- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(32px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-32px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes drawLine {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+}
+
+@keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-12px); }
+}
+
+@keyframes shimmer {
+    0%   { left: -100%; }
+    100% { left: 200%; }
+}
+
+@keyframes pulse-ring {
+    0%   { transform: scale(0.9); opacity: 0.6; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   Scroll Reveal System
+   -------------------------------------------------------------------------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
+                transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.reveal--from-left {
+    transform: translateX(-28px);
+}
+
+.reveal--scale {
+    transform: scale(0.92);
+}
+
+.reveal--visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Hero Enhancements
+   -------------------------------------------------------------------------- */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative background orbs */
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero::before {
+    width: 480px;
+    height: 480px;
+    top: -120px;
+    right: -80px;
+    background: radial-gradient(circle, rgba(26, 77, 92, 0.06) 0%, transparent 70%);
+    animation: floatY 8s ease-in-out infinite;
+}
+
+.hero::after {
+    width: 300px;
+    height: 300px;
+    bottom: -60px;
+    right: 25%;
+    background: radial-gradient(circle, rgba(224, 123, 57, 0.05) 0%, transparent 70%);
+    animation: floatY 11s ease-in-out infinite reverse;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero__content {
+    transition: transform 0.08s linear;
+}
+
+/* Hero subtitle accent line */
+.hero__subtitle::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-accent);
+    vertical-align: middle;
+    margin-right: var(--space-3);
+    border-radius: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   Section Title Animated Underline
+   -------------------------------------------------------------------------- */
+.section-title,
+.service-detail__title,
+.page-hero__title {
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after,
+.service-detail__title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.section-header .section-title::after {
+    left: 50%;
+    transform: scaleX(0) translateX(-50%);
+    transform-origin: center;
+}
+
+.section-header .title--animated::after,
+.title--animated::after {
+    transform: scaleX(1);
+}
+
+.section-header .title--animated::after {
+    transform: scaleX(1) translateX(-50%);
+}
+
+/* --------------------------------------------------------------------------
+   Enhanced Card Hover States
+   -------------------------------------------------------------------------- */
+.service-card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
+}
+
+/* Left accent line on hover */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+    border-radius: 0 0 0 var(--radius-lg);
+}
+
+.service-card:hover::before {
+    transform: scaleY(1);
+}
+
+.service-card__icon {
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.service-card:hover .service-card__icon {
+    background-color: var(--color-primary);
+    color: #fff;
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.engagement__card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.engagement__card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(26, 77, 92, 0.12);
+    border-color: var(--color-primary);
+}
+
+.principle {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.principle:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.principle:hover .principle__number {
+    opacity: 0.45;
+    transition: opacity 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Button Shimmer Effect
+   -------------------------------------------------------------------------- */
+.btn--primary,
+.btn--large {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn--primary::after,
+.btn--large.btn--primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 60%;
+    height: 200%;
+    background: linear-gradient(
+        105deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 80%
+    );
+    transition: none;
+    pointer-events: none;
+}
+
+.btn--primary:hover::after {
+    animation: shimmer 0.6s ease forwards;
+}
+
+/* Button lift */
+.btn {
+    transition: all var(--transition-base), transform 0.15s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   Nav Link Animated Underline
+   -------------------------------------------------------------------------- */
+.nav__link--animated {
+    position: relative;
+}
+
+.nav__link--animated::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.25s ease;
+    border-radius: 1px;
+}
+
+.nav__link--animated:hover::after,
+.nav__link--animated.nav__link--active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* --------------------------------------------------------------------------
+   Header scroll enhancement
+   -------------------------------------------------------------------------- */
+.header.is-scrolled {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    background-color: rgba(255, 255, 255, 0.97);
+}
+
+/* --------------------------------------------------------------------------
+   Experience logos — hover lift
+   -------------------------------------------------------------------------- */
+.experience__logo {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    cursor: default;
+}
+
+.experience__logo:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-base);
+    border-color: var(--color-primary);
+    color: var(--color-primary-dark);
+}
+
+/* --------------------------------------------------------------------------
+   CTA section — pulsing accent ring on button
+   -------------------------------------------------------------------------- */
+.cta .btn--primary {
+    position: relative;
+}
+
+.cta .btn--primary::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: var(--radius-lg);
+    border: 2px solid rgba(224, 123, 57, 0.4);
+    animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Page hero decoration
+   -------------------------------------------------------------------------- */
+.page-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    top: -80px;
+    right: 10%;
+    background: radial-gradient(circle, rgba(26, 77, 92, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatY 10s ease-in-out infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Footer link hover
+   -------------------------------------------------------------------------- */
+.footer__nav a,
+.footer__contact a {
+    position: relative;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.footer__nav a:hover,
+.footer__contact a:hover {
+    padding-left: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   Form field focus polish
+   -------------------------------------------------------------------------- */
+.form-input,
+.form-select,
+.form-textarea {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    transform: translateY(-1px);
+}
