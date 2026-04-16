@@ -52,3 +52,29 @@ Board requested premium design elevation on a feature branch for review.
 3. **All 4 HTML pages** updated to load `js/animations.js` after `main.js`
 
 **Decision:** Kept dependencies at zero — no AOS/GSAP. All effects via vanilla IntersectionObserver + CSS transitions + requestAnimationFrame. Board to review branch and decide merge vs revert.
+
+### FNT-47: Update logo to FountainLogo.png (done)
+
+Board provided actual `FountainLogo.png` via attachment. Downloaded to repo, replaced SVG references across all 4 pages. Footer uses CSS brightness/invert filter for dark background. Commit `246d568`.
+
+### FNT-50: Fix Fountain Design (done)
+
+Board reviewed the elevated design and provided detailed feedback via screenshots.
+
+**FNT-51: Implement board design feedback (done)** — Commit `d842e10`:
+- Experience logos: swapped Ministry of Education → ACC, CreativeNZ, NZTA; removed button hover on logos
+- Button effects: removed magnetic movement, slowed shimmer to 3s auto-repeat on all CTAs
+- Service icon: replaced problematic sun/brightness icon
+- Section underline: extended across full "How We Can Help" heading
+- Hero/About layout: centered content for wide screens
+- Footer: fixed branding to "FOUNTAIN X" with "INNOVATION, EXPERIENCE, & RESEARCH CONSULTANTS", updated email to Hello@fntn.co.nz, phone to +64 28 8515 1882, fixed copyright line
+- Removed "User Research Consultant" references
+
+Feature branch merged to main after all fixes.
+
+### FNT-44: Board approved merge + new service request (in_progress)
+
+Board approved the elevated design for main. Requested one final addition before deployment:
+- **FNT-52**: Add "Product Management" service — validate product roadmaps with end users, Kano/MoSCoW prioritisation methodologies. Assigned to CTO.
+
+Once FNT-52 lands, deploy to production.
