@@ -67,11 +67,7 @@
             el.setAttribute('data-delay', i + 1);
         });
 
-        // Experience logos
-        document.querySelectorAll('.experience__logo').forEach(function (el, i) {
-            el.classList.add('reveal', 'reveal--scale');
-            el.setAttribute('data-delay', i + 1);
-        });
+        // Experience logos handled separately by initExperienceLogos()
     }
 
     /* ------------------------------------------------------------------
@@ -164,6 +160,50 @@
     }
 
     /* ------------------------------------------------------------------
+       Experience logos — sequential reveal
+       Logos load one at a time when the section is ~15px above the fold.
+    ------------------------------------------------------------------ */
+    function initExperienceLogos() {
+        var logos = document.querySelectorAll('.experience__logo');
+        if (!logos.length) return;
+
+        // Set initial hidden state
+        logos.forEach(function (el) {
+            el.classList.add('reveal', 'reveal--scale');
+        });
+
+        if (prefersReducedMotion) {
+            logos.forEach(function (el) { el.classList.add('reveal--visible'); });
+            return;
+        }
+
+        var container = document.querySelector('.experience__logos');
+        if (!container) return;
+
+        var triggered = false;
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting && !triggered) {
+                    triggered = true;
+                    observer.unobserve(entry.target);
+
+                    logos.forEach(function (el, i) {
+                        setTimeout(function () {
+                            el.classList.add('reveal--visible');
+                        }, i * 150);
+                    });
+                }
+            });
+        }, {
+            rootMargin: '0px 0px -15px 0px',
+            threshold: 0
+        });
+
+        observer.observe(container);
+    }
+
+    /* ------------------------------------------------------------------
        Number counter animation
     ------------------------------------------------------------------ */
     function initCounters() {
@@ -210,6 +250,7 @@
     function init() {
         initStagger();
         initScrollReveal();
+        initExperienceLogos();
         initHeroParallax();
         initCardTilt();
         initTitleLines();
